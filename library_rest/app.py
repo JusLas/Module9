@@ -20,7 +20,9 @@ def not_found(error):
 
 @app.route('/api/v1/books/', methods=['GET'])
 def books_list_api_v1():
-    return jsonify(books.all())
+    order_by = request.args.get('order_by', 'id')
+
+    return jsonify(books.all(order_by))
 
 
 @app.route('/api/v1/books/<int:book_id>', methods=['GET'])

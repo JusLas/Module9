@@ -8,7 +8,18 @@ class Books:
         except FileNotFoundError:
             self.books = []
     
-    def all(self):
+    def all(self, order_by='id'):
+        if order_by and isinstance(order_by, str):
+            revese = False
+            if order_by[0] == '-':
+                revese = True
+                order_by = order_by[1:]
+            try:
+                return sorted(
+                    self.books, key=lambda d: d[order_by], reverse=revese)
+            except KeyError:
+                pass
+
         return self.books
 
     def get(self, id):
