@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "title": "Solaris",
     "author": "Stanisław Lem",
     "publication_year": 1961,
@@ -7,6 +8,7 @@
     "lent": false
   },
   {
+    "id": 2,
     "title": "Dzienniki gwiazdowe",
     "author": "Stanisław Lem",
     "publication_year": 1957,
@@ -14,6 +16,7 @@
     "lent": true
   },
   {
+    "id": 3,
     "title": "Jeszcze dzień życia",
     "author": "Ryszard Kapuściński",
     "publication_year": 1976,
