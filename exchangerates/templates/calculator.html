@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Kalkulator walutowy</title>
+  </head>
+  <body>
+    <form method="post" action="/calculator/">
+      <div class="container">
+        <label for="amount"><b>Ilość waluty do kupna</b></label>
+        <input
+          type="number"
+          placeholder="Podaj ilość waluty do kupna"
+          name="amount"
+          required
+          value="{{ data["current_amount"] }}"
+        />
+
+        <label for="currency"><b>Waluta</b></label>
+        <select name="currency" required>
+          {% for rate in data["rates"] %}
+            {% if rate["code"] == data["current_currency"] %}
+            <option value="{{rate["code"] }}" selected>{{ rate["currency"] }}</option>
+            {% else %}
+            <option value="{{rate["code"] }}">{{ rate["currency"] }}</option>
+            {% endif %}
+          {% endfor %}
+        </select>
+
+        <button type="submit">Przelicz</button>
+
+        {% if data["final_price"] is not none %}
+          <p> Koszt zakupu {{ data["current_amount"] }} {{ data["current_currency"] }} wynosi <strong>{{ data["final_price"] }}</strong> PLN
+        {% endif %}
+      </div>
+    </form>
+  </body>
+</html>
